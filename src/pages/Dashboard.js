@@ -5,7 +5,7 @@ import RunningInstances from '../components/RunningInstances';
 import AddTemplateModal from '../components/AddTemplateModal';
 import '../styles/Dashboard.css';
 
-const API_BASE = 'http://localhost:8080/api/containers';
+const API_BASE = process.env.REACT_APP_API_BASE || '/api/containers';
 
 function Dashboard() {
   const [templates, setTemplates] = useState([]);

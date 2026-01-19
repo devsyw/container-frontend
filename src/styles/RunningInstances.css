@@ -1,0 +1,75 @@
+.no-instances {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  color: #95a5a6;
+}
+
+.instances-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.instance-item {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.instance-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.instance-name {
+  font-weight: 500;
+  font-family: monospace;
+}
+
+.instance-status {
+  font-size: 0.85rem;
+}
+
+.instance-status.running {
+  color: #27ae60;
+}
+
+.instance-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.access-button,
+.stop-button {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.access-button {
+  background-color: #3498db;
+  color: white;
+}
+
+.access-button:hover {
+  background-color: #2980b9;
+}
+
+.stop-button {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.stop-button:hover {
+  background-color: #c0392b;
+}

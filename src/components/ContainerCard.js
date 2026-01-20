@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/ContainerCard.css';
 
-const icons = {
+const iconMap = {
   vscode: '💻',
   jupyter: '📓',
   jenkins: '🔧',
@@ -9,24 +9,24 @@ const icons = {
   default: '📦'
 };
 
-function ContainerCard({ template, onLaunch }) {
-  const icon = icons[template.icon] || icons.default;
+function ContainerCard({ template, onLaunch, isLaunching }) {
+  const icon = iconMap[template.icon] || iconMap.default;
 
   return (
     <div className="container-card">
       <div className="card-icon">{icon}</div>
-      <h3 className="card-title">{template.name}</h3>
-      <p className="card-description">{template.description}</p>
-      <div className="card-info">
-        <span className="card-image">{template.image}</span>
-        <span className="card-port">Port: {template.port}</span>
+      <h3>{template.name}</h3>
+      <p>{template.description}</p>
+      <div className="card-footer">
+        <span className="port">Port: {template.port}</span>
+        <button 
+          className={`launch-btn ${isLaunching ? 'launching' : ''}`}
+          onClick={() => onLaunch(template.id)}
+          disabled={isLaunching}
+        >
+          {isLaunching ? '시작 중...' : '실행'}
+        </button>
       </div>
-      <button 
-        className="launch-button"
-        onClick={() => onLaunch(template.id)}
-      >
-        ▶ 실행
-      </button>
     </div>
   );
 }

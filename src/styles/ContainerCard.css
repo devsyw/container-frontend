@@ -48,7 +48,7 @@
   white-space: nowrap;
 }
 
-.launch-button {
+.launch-btn {
   width: 100%;
   background-color: #27ae60;
   color: white;
@@ -61,6 +61,31 @@
   transition: background-color 0.2s;
 }
 
-.launch-button:hover {
+.launch-btn:hover {
   background-color: #219a52;
+}
+
+/* 로딩 상태 버튼 스타일 */
+.launch-btn.launching {
+  background-color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.launch-btn.launching::after {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 8px;
+  border: 2px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

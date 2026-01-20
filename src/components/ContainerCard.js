@@ -4,8 +4,7 @@ import '../styles/ContainerCard.css';
 const iconMap = {
   vscode: '💻',
   jupyter: '📓',
-  jenkins: '🔧',
-  python: '🐍',
+  streamlit: '📊',
   default: '📦'
 };
 

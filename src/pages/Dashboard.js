@@ -14,14 +14,18 @@ function Dashboard() {
   const [launchingId, setLaunchingId] = useState(null);
   const [showAddModal, setShowAddModal] = useState(false);
 
+  const [services, setServices] = useState([]);
+
   const fetchData = async () => {
     try {
-      const [templatesRes, instancesRes] = await Promise.all([
+      const [templatesRes, instancesRes, servicesRes] = await Promise.all([
         axios.get(`${API_BASE}/templates`),
-        axios.get(`${API_BASE}/instances?userId=default-user`)
+        axios.get(`${API_BASE}/instances?userId=default-user`),
+        axios.get(`${API_BASE.replace('/containers', '')}/services`)
       ]);
       setTemplates(templatesRes.data);
       setInstances(instancesRes.data);
+      setServices(servicesRes.data);
     } catch (error) {
       console.error('Failed to fetch data:', error);
     } finally {
@@ -106,13 +110,28 @@ function Dashboard() {
   }
 
   return (
-    <div className="dashboard">
-      <header className="dashboard-header">
-        <h1>🐳 Container Platform</h1>
-        <p>개발 환경을 클릭 한 번으로 실행하세요</p>
-      </header>
-
-      <section className="templates-section">
+  <div className="dashboard">
+    <header className="dashboard-header">
+      <h1>🐳 Container Platform</h1>
+      <p>개발 환경을 클릭 한 번으로 실행하세요</p>
+    </header>
+    {services.length > 0 && (
+      <section className="quick-access-section">
+        <h2>빠른 접속</h2>
+        <div className="quick-access-buttons">
+          {services.map(service => (
+            <button
+              key={service.id}
+              className="quick-access-button"
+              onClick={() => window.open(service.url, '_blank')}
+            >
+              {service.icon} {service.name}
+            </button>
+          ))}
+        </div>
+      </section>
+    )}
+    <section className="templates-section">
         <div className="section-header">
           <h2>사용 가능한 환경</h2>
           <button 

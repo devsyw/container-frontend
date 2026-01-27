@@ -11,7 +11,7 @@ function Dashboard() {
   const [templates, setTemplates] = useState([]);
   const [instances, setInstances] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [launchingId, setLaunchingId] = useState(null); // 실행 중인 템플릿 ID
+  const [launchingId, setLaunchingId] = useState(null);
   const [showAddModal, setShowAddModal] = useState(false);
 
   const fetchData = async () => {
